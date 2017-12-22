@@ -42,7 +42,7 @@ describe('Promisification', function() {
       githubAPI.get('/users/someNonExistingUser').reply(200, {
         message: 'Not Found'
       });
-
+      this.timeout(5000);
       getGitHubProfileAsync('someNonExistingUser')
         .catch(function(err) {
           expect(err.message).to.contain('Failed to get GitHub profile');
